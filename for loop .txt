@@ -1,0 +1,13 @@
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object
+net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SETPATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+
+
+
+FOR LOOP(move files to respective folder)
+> for file in `ls *.txt` 
+do 
+folderName=`echo $file | awk -F. '{print $1}'`;
+rm -r $folderName;
+mkdir $folderName;
+cp $file $folderName;
+done

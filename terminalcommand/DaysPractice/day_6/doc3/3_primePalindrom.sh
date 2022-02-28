@@ -28,16 +28,25 @@ n=$1
       sum=$(( $(($sum*10))+$r));
       n=$(($n/10));
    done
-echo $sum
-
+	printf $sum;
+	if [ $sum -eq $1 ]
+	then
+		printf " :palindrom \n";
+	else
+		printf " :not a palindrom \n";
+	fi
+primeResult=$(checkPrime $sum);
+printf '\n';
+echo $primeResult
 }
 
+
+#execution start from here
 num=$1
-
 primeResult=$(checkPrime $num);
+palindromResult=$(checkPalindrom $num);
+echo $primeResult;
+printf '\n'
+echo $palindromResult; 
 
-echo $result;
 
-
-sum=$(addition 4 6);
-echo $sum;
